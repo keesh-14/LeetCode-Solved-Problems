@@ -1,15 +1,7 @@
 class Solution {
     public int coinChange(int[] coins, int amount) {
         int dp[][] = new int[coins.length+1][amount+1];
-        if(amount==0)
-            return 0;
-        if(coins.length == 1)
-        {
-            if( amount%coins[0]==0)
-                return amount/coins[0];
-            else 
-                return -1;
-        }
+       
         
             
         for(int i=1;i<coins.length+1;i++)
