@@ -27,11 +27,11 @@ public class Solution {
             m++;
         }
         int cnt = Math.abs(m-n);
+        curr2 = headB;
+        curr1 = headA;
         if(m<n)
         {
              i=0;
-            curr1 = headA;
-            curr2 = headB;
             while(i<cnt)
             {
                 curr1 = curr1.next;
@@ -41,19 +41,13 @@ public class Solution {
         else if(m>n)
         { 
              i=0;
-            curr2 = headB;
-            curr1 = headA;
             while(i<cnt)
             {
                 curr2= curr2.next;
                 i++;
             }
         }
-        else 
-        {
-             curr2 = headB;
-            curr1 = headA;
-        }
+        
         while(curr1!=null && curr2!=null)
         {
             if(curr1 == curr2)
