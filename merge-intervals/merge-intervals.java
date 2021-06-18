@@ -1,7 +1,4 @@
- class Mat{
-    int x;
-    int y;
-}
+ 
 public class Solution {
    
     public int[][] merge(int[][] intervals) {
