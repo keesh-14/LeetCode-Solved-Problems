@@ -1,69 +1,28 @@
 class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
-       int i=0;
-       int j=0;
+        HashSet<Integer> hs = new HashSet<Integer>();
+        HashSet<Integer> s = new HashSet<Integer>();
         ArrayList<Integer> al = new ArrayList<Integer>();
-        Arrays.sort(nums1);
-        Arrays.sort(nums2);
-        int k=0;
-        if(nums1[0]>nums2[0])
+        for(int i=0;i<nums1.length;i++)
         {
-            j=1;
+            hs.add(nums1[i]);
+        }
+        for(int i=0;i<nums2.length;i++)
+        {
+            s.add(nums2[i]);
             
         }
-        else if(nums1[0]<nums2[0])
+        for(int k:hs)
         {
-            
-            i=1;
-            
-        }
-        else 
-        {
-            al.add(nums1[0]);
-            k++;
-        }
-        
-        while(i<nums1.length && j<nums2.length)
-        {
-            if(nums1[i]==nums2[j] )
-            {
-                if(k>0)
-                {
-                   if(nums1[i]!=al.get(k-1) && nums2[j]!=al.get(k-1))
-                   {
-                     al.add(nums1[i]);
-                    k++;
-                    i++;
-                    j++;
-                   }
-                    else 
-                    {
-                        j++;
-                        i++;
-                    }
-                }else
-                {
-                    al.add(nums1[i]);
-                    k++;
-                    i++;
-                    j++;
-
-                }
-            }
-            else if(nums1[i]<nums2[j])
-            {
-                i++;
-            }
-            else 
-            {
-                j++;
-            }
+            if(s.contains(k))
+                al.add(k);
         }
         int arr[] = new int[al.size()];
-        for(int l=0;l<al.size();l++)
+        for(int i=0;i<al.size();i++)
         {
-            arr[l] = al.get(l);
+            arr[i] = al.get(i);
         }
-       return arr;     
+        return arr;
     }
+    
 }
