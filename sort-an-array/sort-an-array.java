@@ -55,8 +55,24 @@ class Solution {
             merge(nums,low,high,mid);
         }
     }
+    public void insertion(int nums[])
+    {
+        
+        for(int i=1;i<nums.length;i++)
+        {
+            int key = nums[i];
+            int j=i-1;
+            while(j>=0 && nums[j]>key)
+            {
+                nums[j+1]=nums[j];
+                j--;
+            }
+            nums[j+1]=key;
+       }
+    }
     public int[] sortArray(int[] nums) {
-      mergeSort(nums,0,nums.length-1);  
+        //merge()
+      insertion(nums);  
         return nums;
     }
 }
