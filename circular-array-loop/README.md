@@ -1,3 +1,4 @@
+[Discussion Post (created on 29/6/2021 at 18:54)](https://leetcode.com/problems/circular-array-loop/discuss/1370350/Java-code-using-Floyd's-Algorithm-or-O(N2)time-O(1)space)  
 <h2>457. Circular Array Loop</h2><h3>Medium</h3><hr><div><p>You are playing a game involving a <strong>circular</strong> array of non-zero integers <code>nums</code>. Each <code>nums[i]</code> denotes the number of indices forward/backward you must move if you are located at index <code>i</code>:</p>
 
 <ul>
