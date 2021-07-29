@@ -1,21 +1,18 @@
 class Solution {
     public int findDuplicate(int[] nums) {
-        int max = nums[0];
-        for(int i=1;i<nums.length;i++)
+         int slow = nums[nums[0]];
+         int fast = nums[nums[nums[0]]];
+        while(fast!=slow)
         {
-            max = Math.max(max,nums[i]);
+            fast = nums[nums[fast]];
+            slow = nums[slow];
         }
-        int arr[] = new int[max+1];
-        Arrays.fill(arr,0);
-        for(int i=0;i<nums.length;i++)
+        slow = nums[0];
+        while(fast!=slow)
         {
-            arr[nums[i]]++;
+            fast = nums[fast];
+            slow = nums[slow];
         }
-        for(int i=0;i<=max;i++)
-        {
-            if(arr[i]>1)
-                return i;
-        }
-        return -1;
+        return fast;
     }
 }
