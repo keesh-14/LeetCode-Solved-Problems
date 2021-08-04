@@ -1,21 +1,22 @@
 class Solution {
     public int subarraySum(int[] nums, int k) {
-        HashMap<Integer,Integer> hm = new HashMap<Integer,Integer>();
-        int sum =0;
-        int count=0;
+       HashMap<Integer,Integer> hm = new HashMap<Integer,Integer>();
+        int count = 0;
+        int pre = 0;
         for(int i=0;i<nums.length;i++)
         {
-            sum = sum + nums[i];
-            if(sum==k)
+            pre = pre + nums[i];
+            if(k==pre)
                 count++;
-            if(hm.containsKey(sum-k))
-                count = count+hm.get(sum-k);
-            if(hm.containsKey(sum))
-                hm.put(sum,hm.get(sum)+1);
-            
+            if(hm.containsKey(pre-k))
+            {
+                count = count + hm.get(pre-k);
+            }
+            if(hm.containsKey(pre))
+            hm.put(pre,hm.get(pre)+1);
             else 
-                hm.put(sum,1);
+            hm.put(pre,1);
         }
-        return  count;
+        return count;
     }
 }
