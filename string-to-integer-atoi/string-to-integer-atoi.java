@@ -57,7 +57,7 @@ class Solution {
                else 
                    return Integer.MAX_VALUE;
            }
-           if(j==9 &&  n==Integer.MAX_VALUE/10)
+           if(j==9 && n==Integer.MAX_VALUE/10)
            {
                    if(str=='-')
                    {
@@ -72,7 +72,7 @@ class Solution {
                   }
                       
             }
-           System.out.print(n);
+
             n = n*10 + (int)st.charAt(j)-'0';
             j++;
            
