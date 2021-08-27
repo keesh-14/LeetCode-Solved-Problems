@@ -1,45 +1,36 @@
 class Solution {
     public int maxProfit(int[] prices) {
-        int least = prices[0];
-        int mpst = 0;
+       int least = prices[0];
         int dp1[] = new int[prices.length];
         dp1[0] = 0;
+        int mbst = 0;
         for(int i=1;i<prices.length;i++)
         {
-            if(prices[i]<least)
+            if(least>prices[i])
             {
                 least = prices[i];
+               
             }
-            mpst = prices[i] - least;
-            if(mpst>dp1[i-1])
-            {
-                dp1[i] = mpst; 
-            }
-            else 
-            {
-                dp1[i] = dp1[i-1];
-            }
+            mbst  = prices[i] - least;
+            dp1[i] = Math.max(dp1[i-1],mbst);
+         
         }
-        int max = prices[prices.length-1];
-        int mpbt = 0;
+        int mt = 0;
+         int max = prices[prices.length-1];
         int dp2[] = new int[prices.length];
         dp2[prices.length-1] = 0;
         for(int i=prices.length-2;i>=0;i--)
         {
-            if(prices[i]>max)
+            if(max<prices[i])
             {
                 max = prices[i];
+                
             }
-            mpbt = max - prices[i];
-            if(mpbt>dp2[i+1])
-            {
-                dp2[i] = mpbt; 
-            }else 
-            {
-                dp2[i] = dp2[i+1];
-            }
-        }
+            mt = max-prices[i];
+             dp2[i] = Math.max(dp2[i+1],mt);
         
+        }
+           
         int m =0;
         for(int i=0;i<prices.length;i++)
         {
@@ -47,4 +38,5 @@ class Solution {
         }
         return m;
     }
+    
 }
