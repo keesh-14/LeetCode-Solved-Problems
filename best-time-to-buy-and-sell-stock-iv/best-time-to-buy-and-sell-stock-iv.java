@@ -1,7 +1,7 @@
 class Solution {
     public int maxProfit(int k, int[] prices) {
         int dp[][] = new int[k+1][prices.length];
-        if(prices.length<=0)
+        if(prices.length<=1)
             return 0;
         for(int i=1;i<k+1;i++)
         {
