@@ -1,64 +1,62 @@
 class Solution {
-    public boolean isSafe(int i,int j,char n,char[][] board)
+    public boolean isSafe(char[][] board,char k,int i,int j)
     {
-        int N = board.length;
-        for(int c=0;c<N;c++)
+        for(int x = 0;x<board.length;x++)
         {
-            if(board[c][j] == n || board[i][c] == n)
+            if(board[x][j]==k || board[i][x]==k)
                 return false;
-            
         }
-        int s = (int)Math.sqrt(N);
-        int sr= i-i%s;
+        int s =(int )Math.sqrt(board.length);
+        int sr = i - i%s;
         int sc = j - j%s;
-        for(int v=0;v<s;v++)
+        for(int a = 0;a<s;a++)
         {
-            for(int b=0;b<s;b++)
+            for(int b = 0;b<s;b++)
             {
-                if(board[sr+v][sc+b]==n)
+                if(board[a+sr][b+sc]==k)
                     return false;
             }
         }
         return true;
     }
-    public void solveSudoku(char[][] board) {
-         
-        boolean result = solve(board);
+   public void solveSudoku(char[][] board) {
+         boolean result = solve(board);
     }
     public boolean solve(char[][] board) {
-        int N = board.length;
-        int i=0;
-        int j=0;
-        for(i=0;i<N;i++)
+       int n = board.length;
+        int i =0;
+        int j =0;
+        boolean flag = false;
+        for(i=0;i<n;i++)
         {
-            boolean flag = false;
-            for(j=0;j<N;j++)
+            for(j=0;j<n;j++)
             {
                 if(board[i][j]=='.')
                 {
-                   flag = true;
-                     break;
+                    flag = true;
+                    break;
                 }
+                
             }
             if(flag==true)
-            {
                 break;
-            }
         }
-        if(i==N && j==N)
+        if(i==n && j==n)
             return true;
-        for(int k=1;k<=N;k++)
+        for(int k = 1;k<=9;k++)
         {
-            char n = (char)(k+'0');
-            if(isSafe(i,j,n,board))
+            char c = (char)(k +'0');
+            if(isSafe(board,c,i,j))
             {
-                board[i][j] = n;
+                board[i][j] = (char)(k +'0');
                 if(solve(board))
                     return true;
-                else board[i][j]='.';
-            }
+                board[i][j] = '.'; 
                 
+            }
+            
         }
-        return false;
+        
+       return false; 
     }
 }
