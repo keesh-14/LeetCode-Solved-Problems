@@ -31,9 +31,9 @@ class Solution {
         {
             List<TreeNode> l = helper(i);
             List<TreeNode> r = helper(n-i-1);
-            for(TreeNode left : l)
+            for(TreeNode right : r)
             {
-                for(TreeNode right : r)
+                for(TreeNode left : l)
                 {
                     TreeNode curr = new TreeNode(0); 
                     curr.left = left;
