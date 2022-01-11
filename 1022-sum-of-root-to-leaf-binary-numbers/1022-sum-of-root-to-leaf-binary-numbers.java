@@ -41,7 +41,7 @@ class Solution {
         int num = 0;
         while(i<s.length())
         {
-            num += (int)(s.charAt(i)-'0')*Math.pow(2,pow);
+            num = num*2 + (int)(s.charAt(i)-'0');
             pow--;
             i++;
         }
