@@ -21,8 +21,8 @@ class Node {
 class Solution {
     HashMap<Node,Node> hm = new HashMap<Node,Node>();
     public Node cloneGraph(Node node) {
-        if(node == null)
-            return null;
+       if(node==null)
+           return node;
         Node cloned = hm.get(node);
         if(cloned!=null)
             return cloned;
@@ -30,10 +30,14 @@ class Solution {
         cloned = new Node(node.val);
         hm.put(node,cloned);
         Node curr = cloned;
+        
         for(Node t : node.neighbors)
         {
-            curr.neighbors.add(cloneGraph(t));
+            cloned.neighbors.add(cloneGraph(t));
         }
+        
         return cloned;
+        
+        
     }
 }
