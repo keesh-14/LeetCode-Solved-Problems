@@ -29,7 +29,6 @@ class Solution {
         
         cloned = new Node(node.val);
         hm.put(node,cloned);
-        Node curr = cloned;
         
         for(Node t : node.neighbors)
         {
