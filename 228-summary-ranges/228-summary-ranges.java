@@ -11,12 +11,11 @@ class Solution {
         int last = -1;
         for(int i=1;i<nums.length;i++)
         {
-            boolean flag = false;
             int a = nums[i-1];
             int k = a;
             while(i<nums.length && (a+1==nums[i]) )
             {
-                flag = true;
+               
                 a++;
                 i++;
             }
