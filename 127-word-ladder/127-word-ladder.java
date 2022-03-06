@@ -25,14 +25,15 @@ class Solution {
             int size = q.size();
             for(int i=0;i<size;i++)
             {
-                String curr = q.poll();
-                if(curr.equals(endWord))
-                    return count;
+                 String curr = q.poll();
+                 if(curr.equals(endWord))
+                 return count;
                 
                 for(int j=0;j<wordList.size();j++)
                 {
                     if(vis[j]!=true)
                     {
+                       
                         if(check(curr,wordList.get(j)))
                         {
                             q.add(wordList.get(j));
