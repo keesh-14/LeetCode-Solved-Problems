@@ -25,7 +25,7 @@ class Solution {
         ListNode end = curr;
         curr = head;
         k=k%n;
-        if(k==0 || head.next==null)
+        if(k==0 || n==1 )
             return head;
         while(s!=n-k-1)
         {
