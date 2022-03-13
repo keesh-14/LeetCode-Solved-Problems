@@ -1,35 +1,38 @@
 class Solution {
-    public boolean isValid(char a,char b)
+    public boolean isValidP(char a,char b)
     {
-        if((a=='(' && b==')') || (a=='{' && b=='}') || (a=='[' && b==']'))
-            return true ;
+        if((a=='(' && b==')') || (a=='[' && b==']') || (a=='{' && b=='}'))
+            return true;
         return false;
     }
     public boolean isValid(String s) {
-        char c[] = new char[s.length()];
-        c = s.toCharArray();
         Stack<Character> st = new Stack<Character>();
-        for(int i=0;i<c.length;i++)
+        for(int i=0;i<s.length();i++)
         {
-            if(c[i]=='(' || c[i]=='{' || c[i]=='[')
+            if(s.charAt(i)=='(' || s.charAt(i)=='{' || s.charAt(i)=='[')
             {
-                st.add(c[i]);
+                st.add(s.charAt(i));
             }
-            else 
+            else if(s.charAt(i)==')' || s.charAt(i)=='}' || s.charAt(i)==']')
             {
-                if(st.isEmpty())
-                    return false;
-                if(!isValid(st.peek(),c[i]))
-                    return false;
-                else 
-                {
-                    st.pop();
-                }
+                   if(st.isEmpty())
+                       return false;
+                   if(!isValidP(st.peek(),s.charAt(i)))
+                   {
+                       return false;
+                       
+                   }
+                   else 
+                   {
+                       st.pop();
+                   }
             }
-            
+                     
+                   
         }
         if(!st.isEmpty())
-            return false;
-        return true;
+          return false;
+         return true;             
     }
+                      
 }
