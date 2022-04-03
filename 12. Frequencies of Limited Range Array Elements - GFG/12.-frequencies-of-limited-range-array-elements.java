@@ -43,20 +43,18 @@ class Solution{
     public static void frequencyCount(int arr[], int N, int P)
     {
         // code here
-        TreeMap<Integer,Integer> hm = new TreeMap<Integer,Integer>();
-        for(int i=0;i<N;i++)
-        {
-            if(hm.containsKey(arr[i]))
-            hm.put(arr[i],hm.get(arr[i])+1);
-            else
-            hm.put(arr[i],1);
-        }
+        int count[] = new int[N+1];
         for(int i=0;i<arr.length;i++)
         {
-            if(hm.containsKey(i+1))
-            arr[i] = hm.get(i+1);
-            else 
-            arr[i] = 0;
+            if(arr[i]>=N+1)
+            continue;
+            count[arr[i]]++;
         }
+        for(int i=1;i<=N;i++)
+        {
+            arr[i-1]=count[i];
+        }
+        
+        
     }
 }
