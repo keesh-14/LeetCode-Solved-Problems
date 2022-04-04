@@ -31,20 +31,29 @@ class Solution{
     // a: input array
     // n: size of array
     //Function to find maximum circular subarray sum.
-    public static int kadens(int a[],int n)
+    public static int kadens(int a[],int n,boolean isNormal)
     {
-        int sum = a[0];
-        int max = a[0];
-        for(int i=1;i<n;i++)
+        long sum = 0;
+        long max = 0;
+        int i=0;
+        if(isNormal){
+            sum=Integer.MIN_VALUE;
+            max=Integer.MIN_VALUE;
+        }else{
+            sum=a[0];
+            max=a[0];
+            i=1;
+        }
+        for(;i<n;i++)
         {
             max = Math.max(a[i],a[i]+max);
             sum = Math.max(sum,max);
         }
-        return sum;
+        return (int)sum;
     }
     static int circularSubarraySum(int a[], int n) {
         // Your code here
-       int normal =  kadens(a,n);
+       int normal =  kadens(a,n,true);
        if(normal<0)
        return normal;
        int s = 0;
@@ -54,7 +63,7 @@ class Solution{
            a[i] = -a[i];
            
        }
-       int circular = kadens(a,n);
+       int circular = kadens(a,n,false);
        int mx = Math.max(normal,s+circular);
        return mx;
         
