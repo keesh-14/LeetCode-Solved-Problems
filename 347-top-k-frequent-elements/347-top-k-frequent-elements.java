@@ -1,6 +1,13 @@
 class Solution {
+    class Pair{
+        int key,value;
+        Pair(int key,int value)
+        {
+            this.key = key;
+            this.value = value;
+        }
+    }
     public int[] topKFrequent(int[] nums, int k) {
-        ArrayList<Integer> al  = new ArrayList<Integer>();
         HashMap<Integer,Integer> hm = new HashMap<Integer,Integer>();
         for(int i=0;i<nums.length;i++)
         {
@@ -9,48 +16,30 @@ class Solution {
             else 
                 hm.put(nums[i],1);
         }
-        PriorityQueue<Integer> q = new PriorityQueue<Integer>();
-        int j=0;
-        for(Map.Entry<Integer,Integer> entry : hm.entrySet())
+        PriorityQueue<Pair> q = new PriorityQueue<Pair>((p1,p2) -> (p1.value-p2.value));
+        
+        for(Map.Entry<Integer,Integer> en: hm.entrySet())
         {
-            if(j>=k)
+            if(q.size()>=k)
             {
-                if(q.peek()<entry.getValue())
+                if(q.peek().value<en.getValue())
                 {
-                q.poll();
-                q.add(entry.getValue());
+                    q.poll();
+                    q.add(new Pair(en.getKey(),en.getValue()));
                 }
             }
-            else 
+            else if(q.size()<k)
             {
-                q.add(entry.getValue());
-                j++;
+                q.add(new Pair(en.getKey(),en.getValue()));
             }
-        }
-        HashSet<Integer> hs = new HashSet<Integer>();
+          }
+        int top[] = new int[k];
+        int t = k -1;
         while(!q.isEmpty())
         {
-            int curr = q.poll();
-            if(hm.containsValue(curr))
-            {
-                for (Map.Entry<Integer, Integer> entry : hm.entrySet()) {
-                  if (Objects.equals(entry.getValue(), curr)) {
-                  hs.add(entry.getKey());
-                  
-              }
-                    
-              }
-                
-            }
-            
+            top[t] = q.poll().key;
+            t--;
         }
-        int arr[] = new int[hs.size()];
-        int i=0;
-        for(int s : hs)
-        {
-            arr[i] = s;
-            i++;
-        }
-        return arr;
+        return top;
     }
 }
