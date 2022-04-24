@@ -1,15 +1,24 @@
 class MinStack {
     List<Integer> al;
+    List<Integer> min;
     public MinStack() {
         al = new ArrayList<Integer>();
+        min = new ArrayList<Integer>();
     }
     
     public void push(int val) {
         al.add(val);
+        if(min.size()==0)
+            min.add(val);
+        if(min.get(min.size()-1)<val)
+            min.add(val);
     }
     
     public void pop() {
+        if(al.get(al.size()-1)==min.get(min.size()-1))
+            min.remove(min.size()-1);
         al.remove(al.size()-1);
+        
     }
     
     public int top() {
