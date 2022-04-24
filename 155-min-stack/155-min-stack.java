@@ -10,7 +10,8 @@ class MinStack {
         al.add(val);
         if(min.size()==0)
             min.add(val);
-        if(min.get(min.size()-1)<val)
+        
+        else if(min.get(min.size()-1)<val)
             min.add(val);
     }
     
