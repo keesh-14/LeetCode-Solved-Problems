@@ -27,9 +27,9 @@ class GFG
 
 
 class Solution {
-    public void func(List<String> al,String ans,String S)
+    public void func(List<String> al,String ans,String S,boolean vis[])
     {
-        if(S.length()==0)
+        if(S.length()==ans.length())
         {
             if(!al.contains(ans))
             al.add(ans);
@@ -38,15 +38,22 @@ class Solution {
         }        
         for(int i=0;i<S.length();i++)
         {
-            String left = S.substring(0,i);
-            String right = S.substring(i+1);
-            func(al,ans+S.charAt(i),left+right);
+            if(vis[i] == false)
+            { 
+                vis[i] = true;
+                ans += S.charAt(i); 
+                func(al,ans,S,vis);
+                vis[i]= false;
+                ans = ans.substring(0,ans.length()-1);
            
+            }
+            
         }
     }
     public List<String> find_permutation(String S) {
         List<String> res = new ArrayList<String>();
-        func(res,"",S);
+        boolean vis[]= new boolean[S.length()];
+        func(res,"",S,vis);
         Collections.sort(res);
         return res;
     }
